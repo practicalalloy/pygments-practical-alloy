@@ -1,6 +1,6 @@
 # Pygments Electrum
 
-Lexer for the [Electrum](http://haslab.github.io/Electrum/) modeling language based on the Alloy(https://alloytools.org) lexer at https://github.com/sdg-mit/pygments-alloy.
+Lexer for the [Electrum](http://haslab.github.io/Electrum/) modeling language based on the [Alloy](https://alloytools.org) lexer at https://github.com/sdg-mit/pygments-alloy.
 
 # Installation
 
