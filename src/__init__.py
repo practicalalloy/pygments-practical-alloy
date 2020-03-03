@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-    Pygments lexer for the Alloy modeling language (alloy.mit.edu).
+    Pygments lexer for the Electrum modeling language
 """
 from pygments.lexers.web import HtmlLexer
-from pygments.lexer import bygroups, DelegatingLexer
-from pygments.lexers.agile import RubyLexer, RegexLexer
+from pygments.lexer import bygroups, DelegatingLexer, RegexLexer
+from pygments.lexers.agile import RubyLexer
 from pygments.lexers.templates import ErbLexer
 from pygments.token import Token, Text, Keyword, Name, Comment, String, Error, Number, Operator, Generic, Literal, Punctuation
 
@@ -23,6 +23,7 @@ This lexer outputs several different Keyword, Name, and Operator tokens:
   * Keyword.Type:        'int', 'Int'
   * Keyword:             'this', 'abstract', 'extends', 'set', 'seq', 'one', 'lone', 'let',
                          'all', 'some', 'no', 'sum', 'disj', 'when', 'else',
+                         'var',
                          'run', 'check', 'for', 'but', 'exactly',
                          'fun', 'pred', 'fact', 'assert'
 
@@ -31,10 +32,11 @@ This lexer outputs several different Keyword, Name, and Operator tokens:
   * Name.Function:       function (fun/pred/fact/assert) declaration names
   * Name:                all other identifiers
 
-  * Operator.Word:      'and', 'or', 'implies', 'iff', 'in'
+  * Operator.Word:       'not', 'and', 'or', 'implies', 'iff', 'in'
+                         'always','eventually','after'
   * Operator:            '!', '#', '&&', '++', '<<', '>>', '>=', '<=', '<=>', '.', '->',
                          '-', '+', '/', '*', '%', '=', '<', '>', '&', '!', '^', '|', '~',
-                         '{', '}', '[', ']', '(', ')'
+                         '{', '}', '[', ']', '(', ')','\''
 
 Other outputed tokens are
 
@@ -48,17 +50,18 @@ Other outputed tokens are
                          that the single quotation mark may appear anywhere except at the
                          beginning)
 """
-class AlloyLexer(RegexLexer):
-    name = 'Alloy'
-    aliases = ['alloy']
-    filenames = ['*.als']
+class ElectrumLexer(RegexLexer):
+    name = 'Electrum'
+    aliases = ['electrum']
+    filenames = ['*.als','.ele']
 
-    iden_rex = r'[a-zA-Z_][a-zA-Z0-9_\']*'
+    iden_rex = r'[a-zA-Z_][a-zA-Z0-9_]*'
     text_tuple = (r'[^\S\n]+', Text)
 
     tokens = {
         'sig': [
-            (r'(extends)\b', Keyword, '#pop'),
+            (r'(extends)\b', Keyword),
+            (r'(in)\b', Keyword),
             (iden_rex, Name.Class),
             text_tuple,
             (r',', Punctuation),
@@ -84,11 +87,13 @@ class AlloyLexer(RegexLexer):
             (r'(int|Int)\b', Keyword.Type),
             (r'(this|abstract|extends|set|seq|one|lone|let)\b', Keyword),
             (r'(all|some|no|sum|disj|when|else)\b', Keyword),
+            (r'(var)\b', Keyword),
             (r'(run|check|for|but|exactly)\b', Keyword),
-            (r'(and|or|implies|iff|in)\b', Operator.Word),
+            (r'(not|and|or|implies|iff|in)\b', Operator.Word),
+            (r'(always|eventually|after)\b', Operator.Word),
             (r'(fun|pred|fact|assert)(\s+)', bygroups(Keyword, Text), 'fun'),
             (r'!|#|&&|\+\+|<<|>>|>=|<=|<=>|\.|->', Operator),
-            (r'[-+/*%=<>&!^|~\{\}\[\]\(\)\.]', Operator),
+            (r'[-+/*%=<>&!^|~\{\}\[\]\(\)\.\']', Operator),
             (iden_rex, Name),
             (r'[:,]', Punctuation),
             (r'[0-9]+', Number.Integer),
@@ -119,7 +124,7 @@ the Alloy Analyzer.  The only differences are:
   * in this style, multiline doc comments (starting with '/**') are not bold
     (because the lexer outputs the same token for both kinds of multiline comments)
 """
-class AlloyStyle(Style):
+class ElectrumStyle(Style):
     default_style = ""
 
     styles = {}
