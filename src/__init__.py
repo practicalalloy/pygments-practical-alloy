@@ -33,7 +33,8 @@ This lexer outputs several different Keyword, Name, and Operator tokens:
   * Name:                all other identifiers
 
   * Operator.Word:       'not', 'and', 'or', 'implies', 'iff', 'in'
-                         'always','eventually','after'
+                         'always','eventually','after', 'until', 'releases' 
+                         'historically', 'once', 'before', 'since', 'triggered'
   * Operator:            '!', '#', '&&', '++', '<<', '>>', '>=', '<=', '<=>', '.', '->',
                          '-', '+', '/', '*', '%', '=', '<', '>', '&', '!', '^', '|', '~',
                          '{', '}', '[', ']', '(', ')','\''
@@ -90,7 +91,8 @@ class ElectrumLexer(RegexLexer):
             (r'(var)\b', Keyword),
             (r'(run|check|for|but|exactly)\b', Keyword),
             (r'(not|and|or|implies|iff|in)\b', Operator.Word),
-            (r'(always|eventually|after)\b', Operator.Word),
+            (r'(always|eventually|after|until|releases)\b', Operator.Word),
+            (r'(historically|once|before|since|triggered)\b', Operator.Word),
             (r'(fun|pred|fact|assert)(\s+)', bygroups(Keyword, Text), 'fun'),
             (r'!|#|&&|\+\+|<<|>>|>=|<=|<=>|\.|->', Operator),
             (r'[-+/*%=<>&!^|~\{\}\[\]\(\)\.\']', Operator),
