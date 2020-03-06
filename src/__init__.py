@@ -20,7 +20,7 @@ This lexer outputs several different Keyword, Name, and Operator tokens:
   * Keyword.Namespace:   'module'
   * Keyword.Declaration: 'sig'
   * Keyword.Constant:    'iden', 'univ', 'none'
-  * Keyword.Type:        'int', 'Int'
+  * Keyword.Type:        'int', 'Int', 'Time'
   * Keyword:             'this', 'abstract', 'extends', 'set', 'seq', 'one', 'lone', 'let',
                          'all', 'some', 'no', 'sum', 'disj', 'when', 'else',
                          'var',
@@ -85,7 +85,7 @@ class ElectrumLexer(RegexLexer):
             (r'(module)(\s+)', bygroups(Keyword.Namespace, Text), 'module'),
             (r'(sig|enum)(\s+)', bygroups(Keyword.Declaration, Text), 'sig'),
             (r'(iden|univ|none)\b', Keyword.Constant),
-            (r'(int|Int)\b', Keyword.Type),
+            (r'(int|Int|Time)\b', Keyword.Type),
             (r'(this|abstract|extends|set|seq|one|lone|let)\b', Keyword),
             (r'(all|some|no|sum|disj|when|else)\b', Keyword),
             (r'(var)\b', Keyword),
