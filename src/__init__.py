@@ -95,7 +95,7 @@ class ElectrumLexer(RegexLexer):
             (r'(historically|once|before|since|triggered)\b', Operator.Word),
             (r'(fun|pred|fact|assert)(\s+)', bygroups(Keyword, Text), 'fun'),
             (r'!|#|&&|\+\+|<<|>>|>=|<=|<=>|\.|->', Operator),
-            (r'[-+/*%=<>&!^|~\{\}\[\]\(\)\.\']', Operator),
+            (r'[-+/*%=<>&!^|~\{\}\[\]\(\)\.\';]', Operator),
             (iden_rex, Name),
             (r'[:,]', Punctuation),
             (r'[0-9]+', Number.Integer),
