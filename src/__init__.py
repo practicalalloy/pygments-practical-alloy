@@ -66,6 +66,7 @@ class ElectrumLexer(RegexLexer):
             (iden_rex, Name.Class),
             text_tuple,
             (r',', Punctuation),
+            (r'\+', Punctuation),
             (r'\{', Operator, '#pop'),
         ],
         'module': [
