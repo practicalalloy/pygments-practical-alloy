@@ -66,6 +66,7 @@ class ElectrumLexer(RegexLexer):
             (iden_rex, Name.Class),
             text_tuple,
             (r',', Punctuation),
+            (r'\+', Punctuation),
             (r'\{', Operator, '#pop'),
         ],
         'module': [
@@ -80,7 +81,8 @@ class ElectrumLexer(RegexLexer):
         'root': [
             (r'--.*?$', Comment.Single),
             (r'//.*?$', Comment.Single),
-            (r'/\*.*?\*/', Comment.Multiline),
+            (r'/\*(.|\n)*?\*/', Comment.Multiline),
+            (r'{-(.|\n)*?-}', Comment.Multiline),
             text_tuple,
             (r'(module|open)(\s+)', bygroups(Keyword.Namespace, Text), 'module'),
             (r'(sig|enum)(\s+)', bygroups(Keyword.Declaration, Text), 'sig'),
@@ -89,7 +91,7 @@ class ElectrumLexer(RegexLexer):
             (r'(this|abstract|extends|set|seq|one|lone|let)\b', Keyword),
             (r'(all|some|no|sum|disj|when|else)\b', Keyword),
             (r'(var)\b', Keyword),
-            (r'(run|check|for|but|exactly|steps)\b', Keyword),
+            (r'(run|check|for|but|exactly|steps|expect)\b', Keyword),
             (r'(not|and|or|implies|iff|in)\b', Operator.Word),
             (r'(always|eventually|after|until|releases)\b', Operator.Word),
             (r'(historically|once|before|since|triggered)\b', Operator.Word),
