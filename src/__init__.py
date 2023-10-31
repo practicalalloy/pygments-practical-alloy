@@ -56,7 +56,7 @@ class ElectrumLexer(RegexLexer):
     aliases = ['electrum']
     filenames = ['*.als','.ele']
 
-    iden_rex = r'[a-zA-Z_][a-zA-Z0-9_]*'
+    iden_rex = r'[a-zA-Z_][a-zA-Z0-9_]*\$?'
     text_tuple = (r'[^\S\n]+', Text)
 
     tokens = {
