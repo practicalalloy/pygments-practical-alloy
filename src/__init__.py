@@ -62,6 +62,7 @@ class ElectrumLexer(RegexLexer):
     tokens = {
         'sig': [
             (r'(extends)\b', Keyword),
+            (r'(=)', Keyword),
             (r'(in)\b', Keyword),
             (iden_rex, Name.Class),
             text_tuple,
