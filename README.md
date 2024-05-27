@@ -1,12 +1,12 @@
 # Pygments Electrum
 
-Lexer for the [Electrum](http://haslab.github.io/Electrum/) modeling language based on the [Alloy](https://alloytools.org) lexer at https://github.com/sdg-mit/pygments-alloy.
+Lexer for the Alloy 6 modeling language based on the [Alloy](https://alloytools.org) lexer at https://github.com/sdg-mit/pygments-alloy.
 
 # Installation
 
 ```bash
-git clone https://github.com/alcinocunha/pygments-electrum.git
-cd pygments-electrum
+git clone https://github.com/alcinocunha/pygments-alloy.git
+cd pygments-alloy
 python setup.py install # might require sudo privileges
 ```
 
