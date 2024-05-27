@@ -18,10 +18,10 @@ setup(
     install_requires=['pygments >= 1.4'],
 
     entry_points='''[pygments.lexers]
-                    electrum=src:ElectrumLexer
+                    practical-alloy=src:PracticalAlloyLexer
     
                     [pygments.styles]
-                    electrum=src:ElectrumStyle''',
+                    practical-alloy=src:PracticalAlloyStyle''',
 
     classifiers=[],
 )
