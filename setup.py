@@ -3,10 +3,10 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='pygments-practical-alloy',
-    version='0.1',
+    name='pygments-practicalalloy',
+    version='0.2',
     description='Pygments lexer for Practical Alloy book.',
-    keywords='pygments electrum alloy lexer',
+    keywords='pygments alloy lexer',
     license='GPL v2.0',
 
     author='Alcio Cunha',
