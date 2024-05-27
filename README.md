@@ -5,8 +5,8 @@ Lexer for the Alloy 6 modeling language based on the [Alloy](https://alloytools.
 # Installation
 
 ```bash
-git clone https://github.com/alcinocunha/pygments-alloy.git
-cd pygments-alloy
+git clone https://github.com/alcinocunha/pygments-practical-alloy.git
+cd pygments-practical-alloy
 python setup.py install # might require sudo privileges
 ```
 
