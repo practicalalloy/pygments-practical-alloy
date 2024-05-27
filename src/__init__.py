@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    Pygments lexer for the Electrum modeling language
+    Pygments lexer for the Alloy modeling language
 """
 from pygments.lexers.web import HtmlLexer
 from pygments.lexer import bygroups, DelegatingLexer, RegexLexer
@@ -52,8 +52,8 @@ Other outputed tokens are
                          beginning)
 """
 class PracticalAlloyLexer(RegexLexer):
-    name = 'Practical-Alloy'
-    aliases = ['practical-alloy']
+    name = 'PracticalAlloy'
+    aliases = ['practicalalloy']
     filenames = ['*.als']
 
     iden_rex = r'\$?[a-zA-Z_…][a-zA-Z0-9_]*[₀-₋ₐ-ₜ\$]*'
