@@ -13,7 +13,7 @@ import collections
 
 
 """
-Alloy Lexer class.
+PracticalAlloy Lexer class.
 
 This lexer outputs several different Keyword, Name, and Operator tokens:
 
