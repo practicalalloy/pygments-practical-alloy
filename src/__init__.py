@@ -56,19 +56,19 @@ class PracticalAlloyLexer(RegexLexer):
     aliases = ['practicalalloy']
     filenames = ['*.als']
 
-    iden_rex = r'\$?[a-zA-Z_…][a-zA-Z0-9_]*[₀-₋ₐ-ₜ\$]*'
+    iden_rex = r'[\$@]?[a-zA-Z_…][a-zA-Z0-9_]*[₀-₋ₐ-ₜ\$]*'
     text_tuple = (r'[^\S\n]+', Text)
 
     tokens = {
         'sig': [
             (r'(extends)\b', Keyword),
-            (r'(=)', Keyword),
             (r'(in)\b', Keyword),
+            (r'=', Operator),
+            (r'\+', Operator),
             (iden_rex, Name.Class),
             (r'(Int|String)\b', Keyword.Type),
             text_tuple,
             (r',', Punctuation),
-            (r'\+', Punctuation),
             (r'\{', Operator, '#pop'),
         ],
         'module': [
@@ -86,10 +86,10 @@ class PracticalAlloyLexer(RegexLexer):
             (r'//.*?$', Comment.Single),
             (r'/\*(.|\n)*?\*/', Comment.Multiline),
             (r'{-(.|\n)*?-}', Comment.Multiline),
+            (r'(sig|enum)(\s+)', bygroups(Keyword.Declaration, Text), 'sig'),
             text_tuple,
             (r'(module|open)(\s+)', bygroups(Keyword.Namespace, Text), 'module'),
             (r'(as)(\s+)', Keyword),
-            (r'(sig|enum)(\s+)', bygroups(Keyword.Declaration, Text), 'sig'),
             (r'(iden|univ|none)\b', Keyword.Constant),
             (r'(int|Int|String)\b', Keyword.Type),
             (r'(this|abstract|extends|set|seq|one|lone|as|private)\b', Keyword),
